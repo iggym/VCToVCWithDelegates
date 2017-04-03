@@ -8,8 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FirstViewController: UIViewController ,SecondViewControllerDelegate{
 
+    @IBOutlet weak var labelFirstVC: UILabel!
+    
+    
+    func editLabelOnFirstView(_ text: String) {
+        labelFirstVC.text = text
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let secondViewController = segue.destination as! SecondViewController
+        
+        secondViewController.delegate = self
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
